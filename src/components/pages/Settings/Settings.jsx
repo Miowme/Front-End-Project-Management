@@ -2,19 +2,19 @@ import { colors, Paper, Typography } from '@mui/material';
 
 import SidebarLayout from '@/components/layouts/SidebarLayout';
 
-const Dashboard = () => {
+const Settings = () => {
   return (
-    <SidebarLayout pageTitle="Dashboard">
+    <SidebarLayout pageTitle="Settings">
       <Paper
         sx={{
           padding: 2,
           background: colors.lightBlue[100],
         }}
       >
-        <Typography>Menampilkan dashboard disini</Typography>
+        <Typography>Menampilkan pengaturan disini</Typography>
       </Paper>
     </SidebarLayout>
   );
 };
 
-export default Dashboard;
+export default Settings;

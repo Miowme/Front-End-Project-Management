@@ -4,7 +4,9 @@ import Dashboard from './components/pages/Dashboard';
 import Login from './components/pages/Auth/Login';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import Project from './components/pages/Projects';
 import DetailProject from './components/pages/Projects/DetailProject';
+import Settings from './components/pages/Settings';
 
 const theme = createTheme({
   typography: {
@@ -22,8 +24,16 @@ const router = createBrowserRouter([
     element: <Login />,
   },
   {
+    path: '/projects',
+    element: <Project />,
+  },
+  {
     path: '/projects/:id',
     element: <DetailProject />,
+  },
+  {
+    path: '/settings',
+    element: <Settings />,
   },
 ]);
 
