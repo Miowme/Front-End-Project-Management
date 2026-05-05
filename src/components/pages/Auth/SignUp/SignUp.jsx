@@ -4,34 +4,57 @@ import { useNavigate } from 'react-router';
 import { useState } from 'react';
 import AuthLayout from '@/components/layouts/AuthLayout';
 import TextField from '@/components/ui/Forms/Textfield';
-import session from '@/utils/session';
 import services from '@/services';
 import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
+import Dialog from '@/components/ui/Dialog';
 
-const loginSchema = Yup.object({
+const signUpSchema = Yup.object({
+  name: Yup.string().required('Nama harus di isi'),
   email: Yup.string()
     .required('Email harus di isi')
     .email('Format email tidak valid'),
   password: Yup.string().required('Password harus di isi'),
+  confirmPassword: Yup.string()
+    .required('Konfirmasi password harus di isi')
+    .oneOf(
+      [Yup.ref('password'), null],
+      'Konfirmasi password sama dengan Password',
+    ),
 });
 
-const Login = () => {
+const SignUp = () => {
   const [loading, setLoading] = useState(false);
+
+  const [openDialog, setOpenDialog] = useState(false);
+  const [dialogMessage, setDialogMessage] = useState({title: '', message: ''});
+  const [dialogActions, setDialogActions] = useState([]);
+
   const navigate = useNavigate();
 
   const { control, handleSubmit } = useForm({
-    resolver: yupResolver(loginSchema),
+    resolver: yupResolver(signUpSchema),
   });
 
   const onSubmit = async (data) => {
     setLoading(true);
     try {
-      const response = await services.auth.login(data);
-      session.setSession(response.data.data.access_token);
-      navigate('/');
+      await services.auth.signUp(data);
+      navigate('/login');
     } catch (error) {
-      console.error('login gagal', error);
+      setOpenDialog(true);
+      setDialogMessage({
+        title:'Oops... Terjadi Kesalahan',
+        message: error?.response?.data?.message ?? 'Silahkan coba beberapa saat lagi.'
+      });
+      setDialogActions([ 
+        {
+            label: 'Mengerti',
+            onClick() {
+                setOpenDialog(false)
+            }
+        }
+      ])
     } finally {
       setLoading(false);
     }
@@ -58,7 +81,7 @@ const Login = () => {
             align="center"
             marginbottom={2}
           >
-            Masuk
+            Daftar Baru
           </Typography>
           <Stack
             flexdirection={'column'}
@@ -66,6 +89,7 @@ const Login = () => {
             component={'form'}
             onSubmit={handleSubmit(onSubmit)}
           >
+            <TextField id={"name"} label={'Nama'} control={control} name="name" />
             <TextField id={"email"} label={'Email'} control={control} name="email" />
             <TextField
               id={"password"}
@@ -74,28 +98,31 @@ const Login = () => {
               name="password"
               secureText
             />
-            <Button
-              type="submit"
-              variant="contained"
-              loading={loading}
-              fullWidth
-            >
-              Masuk ke akun Anda
+            <TextField
+              id={"confirmPassword"}
+              label={'Konfirmasi Password'}
+              control={control}
+              name="confirmPassword"
+              secureText
+            />
+            <Button type="submit" variant="contained" loading={loading} fullWidth>
+              Buat akun baru
             </Button>
 
             <Button
-              onClick={() => navigate('/signup')}
+              onClick={() => navigate('/login')}
               type="button"
               variant="text"
               fullWidth
             >
-              Daftar baru
+              Sudah punya akun? Login sekarang
             </Button>
           </Stack>
         </Paper>
       </Stack>
+      <Dialog open={openDialog} actions={dialogActions} {...dialogMessage}/>
     </AuthLayout>
   );
 };
 
-export default Login;
+export default SignUp;

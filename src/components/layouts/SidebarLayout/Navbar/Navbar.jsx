@@ -4,7 +4,7 @@ import { grey } from '@mui/material/colors';
 
 import Dropdown from '@/components/ui/Dropdown';
 import session from '@/utils/session';
-import {useNavigate} from 'react-router';
+import { useNavigate } from 'react-router';
 
 const Navbar = () => {
   const navigate = useNavigate();

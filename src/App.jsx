@@ -9,6 +9,7 @@ import DetailProject from './components/pages/Projects/DetailProject';
 import Settings from './components/pages/Settings';
 import sidebarLoader from './components/layouts/SidebarLayout/SidebarLayout.loader';
 import authLoader from './components/layouts/AuthLayout/AuthLayout.loader';
+import SignUp from './components/pages/Auth/SignUp';
 
 const theme = createTheme({
   typography: {
@@ -26,6 +27,11 @@ const router = createBrowserRouter([
     path: '/login',
     loader: authLoader,
     element: <Login />,
+  },
+  {
+    path: '/signup',
+    loader: authLoader,
+    element: <SignUp />,
   },
   {
     path: '/projects',

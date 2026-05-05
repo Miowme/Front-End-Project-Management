@@ -1,6 +1,6 @@
 import { Stack } from '@mui/material';
 
-const AuthLayout = ({children}) => {
+const AuthLayout = ({ children }) => {
   return (
     <Stack
       flexdirection={'column'}
@@ -9,7 +9,7 @@ const AuthLayout = ({children}) => {
       height={'100vh'}
       width={'100%'}
     >
-        {children}
+      {children}
     </Stack>
   );
 };
