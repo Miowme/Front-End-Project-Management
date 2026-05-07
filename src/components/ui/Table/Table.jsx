@@ -9,8 +9,8 @@ import {
   Box,
 } from '@mui/material';
 
-const Table = ({ columns, data }) => {
-  if (!columns || !data || data.length === 0) {
+const Table = ({ columns, data, isLoading }) => {
+  if ((!columns || !data || data.length === 0) && !isLoading) {
     return <Box>Data tidak tersedia</Box>;
   }
 

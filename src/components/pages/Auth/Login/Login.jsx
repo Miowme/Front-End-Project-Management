@@ -28,7 +28,7 @@ const Login = () => {
     setLoading(true);
     try {
       const response = await services.auth.login(data);
-      session.setSession(response.data.data.access_token);
+      session.setSession(response.data.data);
       navigate('/');
     } catch (error) {
       console.error('login gagal', error);
@@ -66,9 +66,14 @@ const Login = () => {
             component={'form'}
             onSubmit={handleSubmit(onSubmit)}
           >
-            <TextField id={"email"} label={'Email'} control={control} name="email" />
             <TextField
-              id={"password"}
+              id={'email'}
+              label={'Email'}
+              control={control}
+              name="email"
+            />
+            <TextField
+              id={'password'}
               label={'Password'}
               control={control}
               name="password"

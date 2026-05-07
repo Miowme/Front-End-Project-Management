@@ -27,7 +27,10 @@ const SignUp = () => {
   const [loading, setLoading] = useState(false);
 
   const [openDialog, setOpenDialog] = useState(false);
-  const [dialogMessage, setDialogMessage] = useState({title: '', message: ''});
+  const [dialogMessage, setDialogMessage] = useState({
+    title: '',
+    message: '',
+  });
   const [dialogActions, setDialogActions] = useState([]);
 
   const navigate = useNavigate();
@@ -44,17 +47,18 @@ const SignUp = () => {
     } catch (error) {
       setOpenDialog(true);
       setDialogMessage({
-        title:'Oops... Terjadi Kesalahan',
-        message: error?.response?.data?.message ?? 'Silahkan coba beberapa saat lagi.'
+        title: 'Oops... Terjadi Kesalahan',
+        message:
+          error?.response?.data?.message ?? 'Silahkan coba beberapa saat lagi.',
       });
-      setDialogActions([ 
+      setDialogActions([
         {
-            label: 'Mengerti',
-            onClick() {
-                setOpenDialog(false)
-            }
-        }
-      ])
+          label: 'Mengerti',
+          onClick() {
+            setOpenDialog(false);
+          },
+        },
+      ]);
     } finally {
       setLoading(false);
     }
@@ -89,23 +93,38 @@ const SignUp = () => {
             component={'form'}
             onSubmit={handleSubmit(onSubmit)}
           >
-            <TextField id={"name"} label={'Nama'} control={control} name="name" />
-            <TextField id={"email"} label={'Email'} control={control} name="email" />
             <TextField
-              id={"password"}
+              id={'name'}
+              label={'Nama'}
+              control={control}
+              name="name"
+            />
+            <TextField
+              id={'email'}
+              label={'Email'}
+              control={control}
+              name="email"
+            />
+            <TextField
+              id={'password'}
               label={'Password'}
               control={control}
               name="password"
               secureText
             />
             <TextField
-              id={"confirmPassword"}
+              id={'confirmPassword'}
               label={'Konfirmasi Password'}
               control={control}
               name="confirmPassword"
               secureText
             />
-            <Button type="submit" variant="contained" loading={loading} fullWidth>
+            <Button
+              type="submit"
+              variant="contained"
+              loading={loading}
+              fullWidth
+            >
               Buat akun baru
             </Button>
 
@@ -120,7 +139,7 @@ const SignUp = () => {
           </Stack>
         </Paper>
       </Stack>
-      <Dialog open={openDialog} actions={dialogActions} {...dialogMessage}/>
+      <Dialog open={openDialog} actions={dialogActions} {...dialogMessage} />
     </AuthLayout>
   );
 };
