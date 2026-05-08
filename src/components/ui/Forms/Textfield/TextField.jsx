@@ -41,7 +41,7 @@ const TextField = ({
               marginBottom: 2,
             }}
             variant="outlined"
-            size="small"
+            {...props}
           >
             <InputLabel htmlFor={id}>{label}</InputLabel>
             <OutlinedInput

@@ -7,6 +7,7 @@ import {
   TableRow,
   Paper,
   Box,
+  LinearProgress,
 } from '@mui/material';
 
 const Table = ({ columns, data, isLoading }) => {
@@ -16,6 +17,11 @@ const Table = ({ columns, data, isLoading }) => {
 
   return (
     <TableContainer component={Paper}>
+      {
+        isLoading && (
+          <LinearProgress />
+        )
+      }
       <BaseTable sx={{ minWidth: 650 }}>
         <TableHead>
           <TableRow>
