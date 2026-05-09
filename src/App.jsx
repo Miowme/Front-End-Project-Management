@@ -10,6 +10,7 @@ import Settings from './components/pages/Settings';
 import sidebarLoader from './components/layouts/SidebarLayout/SidebarLayout.loader';
 import authLoader from './components/layouts/AuthLayout/AuthLayout.loader';
 import SignUp from './components/pages/Auth/SignUp';
+import SnackbarProvider from './components/ui/Snackbar';
 
 const theme = createTheme({
   typography: {
@@ -54,8 +55,10 @@ const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <LocalizationProvider dateAdapter={AdapterDayjs}>
-        <CssBaseline />
-        <RouterProvider router={router} />
+        <SnackbarProvider>
+          <CssBaseline />
+          <RouterProvider router={router} />
+        </SnackbarProvider>
       </LocalizationProvider>
     </ThemeProvider>
   );
