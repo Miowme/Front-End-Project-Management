@@ -9,7 +9,7 @@ import {
 } from '@mui/material';
 import SidebarLayout from '@/components/layouts/SidebarLayout';
 import { useEffect, useState } from 'react';
-import boards from '@/services/api/baord';
+import services from '@/services';
 import Table from '@/components/ui/Table';
 import TextField from '@/components/ui/Forms/Textfield';
 import { useForm, useWatch } from 'react-hook-form';
