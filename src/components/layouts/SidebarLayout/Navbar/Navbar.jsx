@@ -8,6 +8,9 @@ import { useNavigate } from 'react-router';
 
 const Navbar = () => {
   const navigate = useNavigate();
+
+  const sessionData = session.getSession();
+
   return (
     <Box
       sx={{
@@ -26,7 +29,7 @@ const Navbar = () => {
           icon={<AccountCircle />}
           options={[
             {
-              label: 'Profile',
+              label: sessionData?.user?.name,
               onClick() {
                 console.log('handle navigate to profile');
               },

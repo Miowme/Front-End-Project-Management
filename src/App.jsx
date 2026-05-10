@@ -11,6 +11,7 @@ import sidebarLoader from './components/layouts/SidebarLayout/SidebarLayout.load
 import authLoader from './components/layouts/AuthLayout/AuthLayout.loader';
 import SignUp from './components/pages/Auth/SignUp';
 import SnackbarProvider from './components/ui/Snackbar';
+import detailProjectLoader from './components/pages/Projects/DetailProject/DetailProject.loader';
 
 const theme = createTheme({
   typography: {
@@ -37,12 +38,17 @@ const router = createBrowserRouter([
   {
     path: '/projects',
     loader: sidebarLoader,
-    element: <Project />,
-  },
-  {
-    path: '/projects/:id',
-    loader: sidebarLoader,
-    element: <DetailProject />,
+    children: [
+      {
+        path: '/projects',
+        element: <Project />,
+      },
+      {
+        path: '/projects/:id',
+        loader: detailProjectLoader,
+        element: <DetailProject />,
+      },
+    ],
   },
   {
     path: '/settings',

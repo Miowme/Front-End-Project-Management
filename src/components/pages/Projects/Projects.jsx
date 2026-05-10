@@ -1,12 +1,4 @@
-import {
-  Box,
-  Button,
-  colors,
-  Link,
-  Paper,
-  Stack,
-  Typography,
-} from '@mui/material';
+import { Box, Button, Stack } from '@mui/material';
 import SidebarLayout from '@/components/layouts/SidebarLayout';
 import { useEffect, useState } from 'react';
 import services from '@/services';
@@ -16,6 +8,7 @@ import { useForm, useWatch } from 'react-hook-form';
 import { useDebounce } from 'use-debounce';
 import Pagination from '@/components/ui/Pagination';
 import ModalAddNewProject from './Modals/ModalAddNewProject';
+import { Link } from 'react-router';
 
 const Project = () => {
   const [isLoading, setLoading] = useState(false);
@@ -38,19 +31,18 @@ const Project = () => {
   const [debounceSearch] = useDebounce(watchSearch, 1000);
 
   const fetchBoardsData = async () => {
-      setLoading(true);
-      const response = await services.boards.myBoards({
-        filter: debounceSearch,
-        limit: 10,
-        page,
-      });
-      setBoardsData(response.data.data);
-      setBoardsMeta(response.data.meta);
-      setLoading(false);
-    };
+    setLoading(true);
+    const response = await services.boards.myBoards({
+      filter: debounceSearch,
+      limit: 10,
+      page,
+    });
+    setBoardsData(response.data.data);
+    setBoardsMeta(response.data.meta);
+    setLoading(false);
+  };
 
   useEffect(() => {
-
     fetchBoardsData();
   }, [debounceSearch, page]);
 

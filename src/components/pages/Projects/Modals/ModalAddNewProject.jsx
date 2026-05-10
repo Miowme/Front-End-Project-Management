@@ -38,7 +38,7 @@ const ModalAddNewProject = ({ open, handleClose }) => {
       due_date: datetime.getIsoString(values.due_date),
     });
 
-    snackbar.toggleSnackbar(true, "Berhasil membuat proyek baru !");
+    snackbar.toggleSnackbar(true, 'Berhasil membuat proyek baru !');
 
     setLoading(false);
     reset();
