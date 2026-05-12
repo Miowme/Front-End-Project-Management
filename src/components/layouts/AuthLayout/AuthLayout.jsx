@@ -3,9 +3,9 @@ import { Stack } from '@mui/material';
 const AuthLayout = ({ children }) => {
   return (
     <Stack
-      flexdirection={'column'}
-      alignitems={'center'}
-      justifycontent={'center'}
+      flexDirection={'column'}
+      alignItems={'center'}
+      justifyContent={'center'}
       height={'100vh'}
       width={'100%'}
     >

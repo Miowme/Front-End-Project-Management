@@ -47,7 +47,7 @@ const ModalAddNewProject = ({ open, handleClose }) => {
 
   const renderLoading = () => {
     return (
-      <Stack justifycontent={'center'} alignitems={'center'} height={300}>
+      <Stack justifyContent={'center'} alignItems={'center'} height={300}>
         <CircularProgress />
       </Stack>
     );
@@ -77,8 +77,8 @@ const ModalAddNewProject = ({ open, handleClose }) => {
         <Stack
           direction={'row'}
           gap={1}
-          justifycontent={'flex-end'}
-          alignitems={'center'}
+          justifyContent={'flex-end'}
+          alignItems={'center'}
         >
           <Button type="submit" variant="contained">
             Simpan

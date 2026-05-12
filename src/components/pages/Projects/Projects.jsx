@@ -64,8 +64,8 @@ const Project = () => {
       >
         <Stack
           direction={'row'}
-          justifycontent={'space-between'}
-          alignitems={'center'}
+          justifyContent={'space-between'}
+          alignItems={'center'}
         >
           <Box>
             <TextField

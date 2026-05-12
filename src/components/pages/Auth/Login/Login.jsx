@@ -40,9 +40,9 @@ const Login = () => {
   return (
     <AuthLayout>
       <Stack
-        flexdirection={'column'}
-        alignttems={'center'}
-        justifycontent={'center'}
+        flexDirection={'column'}
+        alignItems={'center'}
+        justifyContent={'center'}
         height={'100vh'}
         width={'100%'}
       >
@@ -56,12 +56,12 @@ const Login = () => {
             variant="h5"
             component={'h1'}
             align="center"
-            marginbottom={2}
+            marginBottom={2}
           >
             Masuk
           </Typography>
           <Stack
-            flexdirection={'column'}
+            flexDirection={'column'}
             gap={1}
             component={'form'}
             onSubmit={handleSubmit(onSubmit)}

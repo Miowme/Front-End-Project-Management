@@ -26,8 +26,8 @@ const Modal = ({ title, open, handleClose, sx, children, ...props }) => {
       >
         <Stack
           direction={'row'}
-          justifycontent={'space-between'}
-          alignitems={'center'}
+          justifyContent={'space-between'}
+          alignItems={'center'}
           spacing={2}
           sx={{
             p: 2,
