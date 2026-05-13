@@ -55,4 +55,4 @@ const useCreateNewTask = (listId) => {
   };
 };
 
-export default useCreateNewTask();
+export default useCreateNewTask;
