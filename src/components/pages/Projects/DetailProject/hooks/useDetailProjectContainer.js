@@ -25,7 +25,7 @@ const useDetailProjectContainer = () => {
 
   const pointerSensor = useSensor(PointerSensor, {
     activationConstraint: {
-      distance: 5,
+      distance: 10,
     },
   });
 
