@@ -5,7 +5,7 @@ const ModalTaskDetail = () => {
     <ModalTaskDetailProvider>
       <ModalTaskDetail />
     </ModalTaskDetailProvider>
-  )
-}
+  );
+};
 
 export default ModalTaskDetail;
